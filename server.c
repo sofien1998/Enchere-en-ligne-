@@ -251,6 +251,7 @@ if ((pthread_create(&Thr1,NULL,connection_handler,(void *)new_sock)<0))
 						   pthread_cond_broadcast(& cond1);
 						 pthread_mutex_unlock(& mutex_stdout);
 						 printf ("\n|||||||||Le Thread 2 apres l'autorisation |||||||||\n");  
+						  ///help
 					   
 					   
 				   } 
