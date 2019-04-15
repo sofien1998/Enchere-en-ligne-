@@ -110,7 +110,7 @@ int nbreClient=0;
 					 
 				   	pthread_t Thr1;//Thread numero1 pour chaque Client 
 				   	pthread_t Thr2;//Thread  pour  eviter le probleme de concurence  entre les threads là on utilise les mutexs 
-				   	pthread_t Thr3;
+				   	pthread_t Thr3; //Thread pour calculer le temps acctuel , on a utilisé ce thread pour mettre fin a l'enchere
 				   	new_sock=malloc(1); 
 				   	*new_sock=client_sock;
 if ((pthread_create(&Thr1,NULL,connection_handler,(void *)new_sock)<0)) 
@@ -198,7 +198,7 @@ if ((pthread_create(&Thr1,NULL,connection_handler,(void *)new_sock)<0))
 				   	 //on peut utiliser au lieux de mutex mais  cest une grosse faute ..sleep(1);
 				   	 
 				   	 
-				   	 // on ferme l'enchere si nombre d'utilisateur==q je veux changer  cette condition de maniere que l'enchere se termine en temps precise
+				   	 // 
 				   	 pthread_mutex_lock(& mutex_stdout); 
 						   pthread_cond_wait(& cond1,& mutex_stdout);
 						 pthread_mutex_unlock(& mutex_stdout);
